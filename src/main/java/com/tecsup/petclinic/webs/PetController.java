@@ -2,6 +2,9 @@ package com.tecsup.petclinic.webs;
 
 import com.tecsup.petclinic.mapper.PetMapper;
 import lombok.extern.slf4j.Slf4j;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -17,6 +20,7 @@ import com.tecsup.petclinic.domain.PetTO;
 import com.tecsup.petclinic.entities.Pet;
 import com.tecsup.petclinic.exception.PetNotFoundException;
 import com.tecsup.petclinic.services.PetService;
+import com.tecsup.petclinic.services.PetServiceImpl;
 
 import java.util.List;
 
@@ -28,6 +32,8 @@ import java.util.List;
 @RestController
 @Slf4j
 public class PetController {
+	
+	static final Logger log = LogManager.getLogger(PetServiceImpl.class);
 
 	//@Autowired
 	private PetService petService;

@@ -4,6 +4,9 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.Test;
 
 import com.tecsup.petclinic.entities.Pet;
@@ -18,6 +21,8 @@ import java.util.List;
 @SpringBootTest
 @Slf4j
 public class PetServiceTest {
+	
+	static final Logger log = LogManager.getLogger(PetServiceImpl.class);
 
     @Autowired
     private PetService petService;

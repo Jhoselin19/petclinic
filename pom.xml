@@ -53,7 +53,7 @@
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
-			<version>${org.projectlombok.version}</version>
+			<version>1.18.28</version>
 			<optional>true</optional>
 		</dependency>
 

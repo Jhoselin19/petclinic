@@ -20,7 +20,7 @@ import org.springframework.test.web.servlet.ResultActions;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jayway.jsonpath.JsonPath;
-import com.tecsup.petclinic.domain.PetTO;
+import com.tecsup.petclinic.domain.OwnerTO;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -61,7 +61,41 @@ public class OwnerControllerTest {
 				.andExpect(jsonPath("$.city", is(city)))
 				.andExpect(jsonPath("$.telephone", is(telephone)));
 	}
+	/**
+	 * @throws Exception
+	 */
+	
+	@Test
+	public void testCreateOwner() throws Exception{
+		
+	    String first_name = "Deysi";
+	    String last_name = "Lloja";
+	    String address = "Avenida 123";
+	    String city = "Lima";
+	    String telephone = "987654321";
+	    
+	   OwnerTO newOwnerTO = new OwnerTO();
+	   newOwnerTO.setFirstName(first_name);
+	   newOwnerTO.setLastName(last_name);
+	   newOwnerTO.setAddress(address);
+	   newOwnerTO.setCity(city);
+	   newOwnerTO.setTelephone(telephone);
+	   
+	   mockMvc.perform(post("/owners")
+			   
+			   		.content(om.writeValueAsString(newOwnerTO))
+			   		.header(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON))
+	   		   
+	   			.andDo(print())
+	   			.andExpect(status().isCreated())
+	   		   
+	   			.andExpect(jsonPath("$.first_name", is(first_name)))
+	   			.andExpect(jsonPath("$.last_name", is(last_name)))
+	   			.andExpect(jsonPath("$.address", is(address)))
+	   			.andExpect(jsonPath("$.city", is(city)))
+	   		   	.andExpect(jsonPath("$.telephone", is(telephone)));
+	}
+}
+	
 	
 
-
-}

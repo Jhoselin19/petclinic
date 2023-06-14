@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
+import com.tecsup.petclinic.mapper.OwnerMapper;
 
 import com.tecsup.petclinic.domain.OwnerTO;
 import com.tecsup.petclinic.entities.Owner;
@@ -40,6 +41,26 @@ public class OwnerController {
 		this.ownerService = ownerService;
 		this.mapper = mapper;
 	}
+	
+	/**
+	 * Create Owner
+	 * @param newOwner
+	 * @return
+	 */
+	@PostMapping("/owner")
+	@ResponseStatus(HttpStatus.CREATED)
+	Owner create (@RequestBody OwnerTO newOwner){
+		Owner owner = new Owner();
+		owner.setFirstName(newOwner.getFirstName());
+		owner.setLastName(newOwner.getLastName());
+		owner.setAddress(newOwner.getAddress());
+		owner.setCity(newOwner.getCity());
+		owner.setTelephone(newOwner.getTelephone());
+		
+		return ownerService.create(owner);
+		
+	}
+	
 
 	/**
 	 * Find pet by id

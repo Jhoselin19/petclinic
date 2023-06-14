@@ -33,7 +33,7 @@ public class OwnerControllerTest {
 	@Test
 	public void testCreateOwner() throws Exception{
 		
-	    String first_name = "Deysi";
+	    String first_name = "Deysi Rubi";
 	    String last_name = "Lloja";
 	    String address = "Avenida 123";
 	    String city = "Lima";
